@@ -1,7 +1,8 @@
 import "./App.css";
+import Route from "./router/Route";
 
 function App() {
-  return <div className="text-orange-700 text-3xl">wow</div>;
+  return <Route></Route>;
 }
 
 export default App;
