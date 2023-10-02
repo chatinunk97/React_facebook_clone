@@ -1,8 +1,9 @@
 import {Outlet} from 'react-router-dom'
+import Header from './Header'
 export default function Layout() {
   return (
     <>
-      <h1>Header</h1>
+      <Header/>
       <Outlet />
     </>
   );

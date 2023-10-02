@@ -1,8 +1,8 @@
 import { useState } from "react";
-import {useAuth} from "../../hook/use-auth";
+import { useAuth } from "../../hook/use-auth";
 import LoginButton from "./LoginButton";
 import LoginInput from "./Logininput";
-
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const [input, setInput] = useState({ emailOrMobile: "", password: "" });
@@ -12,7 +12,9 @@ export default function LoginForm() {
   };
   const handleSubmitForm = (event) => {
     event.preventDefault();
-    login(input);
+    login(input).catch((err) => {
+      toast.error(err.response.data.message);
+    });
   };
   return (
     <form className="grid gap-4" onSubmit={handleSubmitForm}>

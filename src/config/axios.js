@@ -1,17 +1,28 @@
 import axios from "axios";
 import { BACKEND_URL } from "./env";
-import {getAccessToken} from "../utils/local-storage";
+import { getAccessToken, removeAccessToken } from "../utils/local-storage";
 
 axios.defaults.baseURL = BACKEND_URL;
 
-axios.interceptors.request.use(
-  (configObj) => {
-    const token = getAccessToken();
+axios.interceptors.request.use((configObj) => {
 
-    if (token) {
-      configObj.headers.Authorization = `Bearer ${token}`;
+  const token = getAccessToken();
+
+  if (token) {
+    configObj.headers.Authorization = `Bearer ${token}`;
+  }
+  return configObj;
+});
+
+axios.interceptors.response.use(
+response => response,
+  (error) => {
+    if (error.response.status === 401) {
+      removeAccessToken();
+      window.location.href = "/login";
     }
-    return configObj;
+    return Promise.reject(error);
   }
 );
+
 export default axios;
