@@ -44,8 +44,8 @@ export default function PictureForm({ title, children }) {
           </FormButton>
         </div>
       </div>
-      <div className="flex justify-center">
-        {children(file ? URL.createObjectURL(file) : null)}
+      <div className="flex justify-center cursor-pointer">
+        {children(file ? URL.createObjectURL(file) : null, ()=>inputEl.current.click())}
       </div>
     </div>
   );
