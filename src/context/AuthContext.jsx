@@ -1,7 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 import axios from "../config/axios";
-import { addAccessToken, getAccessToken } from "../utils/local-storage";
+import {
+  addAccessToken,
+  getAccessToken,
+  removeAccessToken,
+} from "../utils/local-storage";
 export default function AuthContextProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
   const [initialLoading, setInitialLoading] = useState(true);
@@ -36,8 +40,12 @@ export default function AuthContextProvider({ children }) {
     setAuthUser(result.data.user);
   };
 
+  const logout = async () => {
+    removeAccessToken();
+    setAuthUser(null);
+  };
   return (
-    <AuthContext.Provider value={{ login, authUser, initialLoading, register }}>
+    <AuthContext.Provider value={{ login, authUser, initialLoading, register,logout }}>
       {children}{" "}
     </AuthContext.Provider>
   );

@@ -16,7 +16,7 @@ export default function Menu() {
           key={i.id}
           to={i.to}
           Icon={i.Icon}
-          fill={currentLocation === i.to ? "#1877F2" : ""}
+          active={currentLocation === i.to ? true : false}
         />
       ))}
     </nav>
