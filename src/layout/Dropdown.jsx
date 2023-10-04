@@ -31,7 +31,7 @@ export default function Dropdown() {
     >
       {/*Circle Profile pic*/}
       <div>
-        <Avatar />
+        <Avatar src={authUser.profileImg} />
       </div>
       {open && (
         <div>
@@ -39,13 +39,13 @@ export default function Dropdown() {
           <div className=" w-96 absolute bg-white right-0 translate-y-1 border rounded-xl shadow-xl p-4">
             {/*Go to your profile*/}
             <Link
-              to="/profile/me"
+              to={`/profile/${authUser.id}`}
               onClick={() => {
                 setOpen(false);
               }}
             >
               <div className="flex gap-4 p-2 items-center rounded-xl hover:bg-gray-100">
-                <Avatar className="h-14" />
+                <Avatar className="h-14" src={authUser.profileImg} />
                 <div>
                   <div className="font-semibold">
                     {authUser.firstName} {authUser.lastName}

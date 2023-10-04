@@ -18,7 +18,7 @@ export default function AuthUserAction() {
         onClose={() => setOpen(false)}
         maxWidth={44}
       >
-        <EditProfileForm />
+        <EditProfileForm onSuccess = {()=>{setOpen(false)}} />
       </Modal>
     </div>
   );
