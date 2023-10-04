@@ -6,7 +6,7 @@ export default function Avatar({ className = "h-10"  , src}) {
   return (
     <img
       src={src ? src :  defaultImage}
-      alt="user"
+      alt="user" 
       className={classes}
     />
   );
