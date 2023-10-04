@@ -21,7 +21,6 @@ export default function ProfilePage() {
         .get(`/user/${profileId}`)
         .then((res) => {
           setProfileUser(res.data.user);
-          console.log(res.data);
         })
         .catch((error) => console.log(error));
     }
